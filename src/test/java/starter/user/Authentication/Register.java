@@ -23,7 +23,7 @@ public class Register {
     @Step("I send a request to register into Alta Shop with valid credentials")
     public void sendRequestRegisterValidData(){
         JSONObject requestBody = new JSONObject();
-        requestBody.put("email", "Irfan009200@mail.com");
+        requestBody.put("email", "Irfan009210@mail.com");
         requestBody.put("password", "123123");
         requestBody.put("fullname", "Irfan Semester Enam");
 
@@ -40,7 +40,7 @@ public class Register {
 
         restAssuredThat(response -> response.body("data.ID", Matchers.notNullValue()));
         restAssuredThat(response -> response.body("data.Fullname", Matchers.equalTo("Irfan Semester Enam")));
-        restAssuredThat(response -> response.body("data.Email", Matchers.equalTo("Irfan009200@mail.com")));
+        restAssuredThat(response -> response.body("data.Email", Matchers.equalTo("Irfan009210@mail.com")));
         restAssuredThat(response -> response.body("data.Password", Matchers.equalTo("123123")));
 
         restAssuredThat(response -> response.body(matchesJsonSchema(schema)));

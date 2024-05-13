@@ -15,8 +15,7 @@ jobs:
         with:
           java-version: '20'
           distribution: 'adopt'
-      - name: Build and Test with Maven
-        run: mvn --batch-mode --update-snapshots verify
+
   test:
     name: TEST API AUTOMATION ALTA SHOP
     needs: build
