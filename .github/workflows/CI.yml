@@ -15,6 +15,14 @@ jobs:
         with:
           java-version: '20'
           distribution: 'adopt'
+          java-package: jdk
+          architecture: x64
+          check-latest: false
+          server-id: github
+          server-username: ${{ github.actor }}
+          server-password: ${{ secrets.GITHUB_TOKEN }}
+          overwrite-settings: true
+          job-status: success
       - name: Build and Test with Maven
         run: mvn --batch-mode --update-snapshots verify
   test:
