@@ -17,11 +17,13 @@ jobs:
           distribution: 'adopt'
 
   test:
-    name: TEST API AUTOMATION ALTA SHOP
+    name: Test
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-java@v2
+      - uses: actions/checkout@v2
+      - name: Set up JDK 20
+        uses: actions/setup-java@v2
         with:
           java-version: '20'
           distribution: 'adopt'
