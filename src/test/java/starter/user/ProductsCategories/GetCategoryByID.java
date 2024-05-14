@@ -34,4 +34,26 @@ public class GetCategoryByID {
 
         restAssuredThat(response -> response.body(matchesJsonSchema(schema)));
     }
+
+    //Negatif Scenario
+    @Step("I set the API endpoint to get a category by invalid ID")
+    public String setAPIEndpointGetCategoryByInvalidID(){
+        return url + "1000000";
+    }
+
+    @Step("I send a request to get the category by invalid ID")
+    public void sendRequestGetCategoryInvalidID(){
+        SerenityRest.given()
+                .get(setAPIEndpointGetCategoryByInvalidID());
+    }
+
+    @Step("I should receive a status code of 404 Not Found")
+    public void statusCode404(){
+        restAssuredThat(response -> response.statusCode(404));
+    }
+
+    @Step("I should receive an error message indicate record not found")
+    public void receiveErrorMessageRecordNotFound(){
+        restAssuredThat(response -> response.body("error", Matchers.equalTo("record not found")));
+    }
 }

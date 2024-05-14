@@ -1,8 +1,10 @@
+@DeleteCategoryByID
 Feature: Delete a Category by ID
     As a Admin
     I want to delete a category by its ID
     So that I can remove unnecessary categories from the system
 
+    @DeleteCategoryBy-ValidID
     Scenario: Delete a category with valid ID
         Given I set the API endpoint to delete a category by ID
         When I send a request to delete the category by ID

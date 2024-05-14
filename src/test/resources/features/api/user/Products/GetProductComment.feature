@@ -1,8 +1,10 @@
+@GetProductComment
 Feature: Get a Product Comment
     As an Admin
     I want to retrieve a specific product comment
     So that I can review and respond to user feedback effectively
 
+    @GetProductComment-ValidID
     Scenario: Get a Product Comment with valid ID
         Given I set API endpoint to get a product comment with specific ID
         When I send a request to get product comment with specific ID

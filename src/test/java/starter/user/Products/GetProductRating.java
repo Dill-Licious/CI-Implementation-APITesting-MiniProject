@@ -32,4 +32,26 @@ public class GetProductRating {
 
         restAssuredThat(response -> response.body(matchesJsonSchema(schema)));
     }
+
+    //Negatif Scenario
+    @Step("I set API endpoint to get product rating with invalid ID")
+    public String setAPIEndpointGetProductRatingInvalidID(){
+        return url + "900000/ratings";
+    }
+
+    @Step("I send a request to get product rating with invalid ID")
+    public void sendRequestGetProductRatingInvalidID(){
+        SerenityRest.given()
+                .get(setAPIEndpointGetProductRatingInvalidID());
+    }
+
+    @Step("I receive a rating data of 0")
+    public void receiveRatingDataNol(){
+        JsonSchemaHelper helper = new JsonSchemaHelper();
+        String schema = helper.getResponseSchema(JsonSchema.GET_PRODUCT_RATING_SCHEMA);
+
+        restAssuredThat(response -> response.body("data", Matchers.equalTo(0)));
+
+        restAssuredThat(response -> response.body(matchesJsonSchema(schema)));
+    }
 }

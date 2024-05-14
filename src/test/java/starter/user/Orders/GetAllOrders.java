@@ -38,4 +38,18 @@ public class GetAllOrders {
 
         restAssuredThat(response -> response.body(matchesJsonSchema(schema)));
     }
+
+    @Step("I send a request with invalid method to retrieve all data orders")
+    public void sendRequestRetrieveAllDataOrdersInvalidMethod(){
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGdWxsbmFtZSI6IkZpcnN0bmFtZSBMYXN0bmFtZSIsIkVtYWlsIjoic29tZW9uZUBtYWlsLmNvbSJ9.bGpZNDg6YHtKlTFw7_yuyn3SAICmfvdIV1yX7mIKrTw";
+
+        SerenityRest.given()
+                .header("Authorization", "Bearer " + token) // Menambahkan token ke header
+                .post(setAPIEndpointGetAllDataOrders()); //harusnya: get
+    }
+
+    @Step("I receive an error message indicate end of file")
+    public void receiveErrorMessageEOF(){
+        restAssuredThat(response -> response.body("error", Matchers.equalTo("EOF")));
+    }
 }

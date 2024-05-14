@@ -24,4 +24,14 @@ public class GetAllOrders_Steps {
     public void receiveOrdersData(){
         getAllOrders.receiveOrdersData();
     }
+
+    @When("I send a request with invalid method to retrieve all data orders")
+    public void sendRequestRetrieveAllDataOrdersInvalidMethod(){
+        getAllOrders.sendRequestRetrieveAllDataOrdersInvalidMethod();
+    }
+
+    @Then("I receive an error message indicate end of file")
+    public void receiveErrorMessageEOF(){
+        getAllOrders.receiveErrorMessageEOF();
+    }
 }

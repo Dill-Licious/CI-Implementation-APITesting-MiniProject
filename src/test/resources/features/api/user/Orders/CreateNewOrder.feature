@@ -1,8 +1,10 @@
+@CreateNewOrder
 Feature: Create a new order
     As a User
     I want to create a new order
     So that I can buy a product from Alta Shop
 
+    @CreateNewOrder-Valid
     Scenario: Create a new order with valid credentials
         Given I set the API endpoint to create a new order
         When I send a request to create a new order with valid credentials

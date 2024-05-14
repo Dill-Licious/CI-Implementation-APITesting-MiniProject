@@ -38,4 +38,21 @@ public class GetUserInformation {
 
         restAssuredThat(response -> response.body(matchesJsonSchema(schema)));
     }
+
+    //Negatif Scenario
+    @Step("I send a request to get user information without token")
+    public void sendRequestUserInfoWithoutToken(){
+        SerenityRest.given()
+                .get(setAPIEndpointGetUserInfo());
+    }
+
+    @Step("I should receive a status code of 401 Unauthorized")
+    public void statusCode401(){
+        restAssuredThat(response -> response.statusCode(401));
+    }
+
+    @Step("I should receive an error message indicate unauthorized")
+    public void receiveErrorMessageUnauthorized(){
+        restAssuredThat(response -> response.body("error", Matchers.equalTo("unauthorized")));
+    }
 }

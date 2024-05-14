@@ -1,5 +1,6 @@
 package starter.stepdefinitions.ProductsCategories_Steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -25,5 +26,26 @@ public class GetCategoryByID_steps {
         getCategoryByID.receiveDetailCategoryByID();
     }
 
+
+    //Negatif Scenario
+    @Given("I set the API endpoint to get a category by invalid ID")
+    public void setAPIEndpointGetCategoryByInvalidID(){
+        getCategoryByID.setAPIEndpointGetCategoryByInvalidID();
+    }
+
+    @When("I send a request to get the category by invalid ID")
+    public void sendRequestGetCategoryInvalidID(){
+        getCategoryByID.sendRequestGetCategoryInvalidID();
+    }
+
+    @And("I should receive a status code of 404 Not Found")
+    public void statusCode404(){
+        getCategoryByID.statusCode404();
+    }
+
+    @Then("I should receive an error message indicate record not found")
+    public void receiveErrorMessageRecordNotFound(){
+        getCategoryByID.receiveErrorMessageRecordNotFound();
+    }
 
 }
